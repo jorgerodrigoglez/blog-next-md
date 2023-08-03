@@ -1,8 +1,12 @@
+import Link from 'next/link';
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Commissioner } from 'next/font/google'
+import Avatar from '../assets/images/avatar.webp'
 
-const inter = Inter({ subsets: ['latin'] })
+//console.log(Avatar);
+
+const font = Commissioner({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +19,25 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="es">
+      <body className={font.className}>
+      <main className="grid min-h-screen items-center py-20 bg-sky-400">
+          <div className="mx-auto rounded-md p-1 sm:w-[600px] md:w-[980px]">
+            <div className="rounded bg-gray-100 p-8">
+              <Link href="/">
+                <img
+                  src={Avatar.src}
+                  alt="Imagen avatar de presentación"
+                  className="mx-auto -mt-10 mb-1 border-dotted border-2"
+                  width={200}
+                  height={200}
+                />
+              </Link>
+              {children}
+            </div>
+          </div>
+        </main>
+      </body>
     </html>
   )
 }
